@@ -1,0 +1,28 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.12, pytest-9.2.0, pluggy-1.7.0
+rootdir: /Users/dongzhuo/Desktop/自建应用/ClawHunt/tasks/2236-S5-INTEL-027
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.16.0
+collected 111 items
+
+tests/test_ac1_approve_in_check_409.py ...                               [  2%]
+tests/test_ac2_four_eyes_403.py ....                                     [  6%]
+tests/test_ac3_reject_comment.py ........                                [ 13%]
+tests/test_ac4_locked_after_approved.py ..........                       [ 22%]
+tests/test_approval_side_effects.py ........                             [ 29%]
+tests/test_approvals_list.py .......                                     [ 36%]
+tests/test_constraints.py ............                                   [ 46%]
+tests/test_link_recheck.py ....                                          [ 50%]
+tests/test_migration_roundtrip.py .                                      [ 51%]
+tests/test_permissions.py ................                               [ 65%]
+tests/test_state_machine_matrix.py ..................................    [ 96%]
+tests/test_withdraw.py ....                                              [100%]
+
+=============================== warnings summary ===============================
+tests/test_ac1_approve_in_check_409.py::test_approve_in_check_returns_409
+  /Users/dongzhuo/Desktop/自建应用/ClawHunt/tasks/2236-S5-INTEL-027/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 111 passed, 1 warning in 4.16s ========================

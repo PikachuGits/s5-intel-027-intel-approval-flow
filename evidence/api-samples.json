@@ -1,0 +1,376 @@
+[
+  {
+    "label": "待审批列表",
+    "request": {
+      "method": "GET",
+      "path": "/api/intel/approvals?status=pending"
+    },
+    "response_status": 200,
+    "response": {
+      "status": "pending",
+      "total": 4,
+      "limit": 20,
+      "offset": 0,
+      "items": [
+        {
+          "id": "1898a063-61e8-4e68-be23-e02500d2a6ea",
+          "org_id": "a0000000-0000-4000-8000-000000000001",
+          "site_id": "a0000000-0000-4000-8000-0000000000a1",
+          "title": "虚构情报 2：园区租金补贴动态（测试数据）",
+          "summary": "虚构摘要，仅用于本地演示与验收复测，不含任何真实企业信息。",
+          "source_url": "https://example.invalid/intel/fictional-42-1",
+          "relevance": "high_relevance",
+          "match_conditions": {
+            "keywords": [
+              "展会排期"
+            ]
+          },
+          "status": "checked",
+          "checked_by": "00000000-0000-4000-8000-0000000000e1",
+          "checked_at": "2026-11-25T13:02:29.962542Z",
+          "approved_by": null,
+          "approved_at": null,
+          "published_at": null,
+          "expired_at": null,
+          "review_comment": null,
+          "created_at": "2026-11-25T13:02:30.023677Z",
+          "updated_at": "2026-11-25T13:02:30.023677Z"
+        },
+        {
+          "id": "4066354f-67dc-40b6-8c8c-d928e4ccfb4c",
+          "org_id": "a0000000-0000-4000-8000-000000000001",
+          "site_id": "a0000000-0000-4000-8000-0000000000a1",
+          "title": "虚构情报 8：产业扶持申报动态（测试数据）",
+          "summary": "虚构摘要，仅用于本地演示与验收复测，不含任何真实企业信息。",
+          "source_url": "https://example.invalid/intel/fictional-42-7",
+          "relevance": "low_relevance",
+          "match_conditions": {},
+          "status": "checked",
+          "checked_by": "00000000-0000-4000-8000-0000000000e1",
+          "checked_at": "2026-11-25T13:02:29.962542Z",
+          "approved_by": null,
+          "approved_at": null,
+          "published_at": null,
+          "expired_at": null,
+          "review_comment": null,
+          "created_at": "2026-11-25T13:02:30.023677Z",
+          "updated_at": "2026-11-25T13:02:30.023677Z"
+        },
+        {
+          "id": "55097f01-1fc3-4c89-a65c-a786147a9c15",
+          "org_id": "a0000000-0000-4000-8000-000000000001",
+          "site_id": "a0000000-0000-4000-8000-0000000000a1",
+          "title": "虚构情报 9：展会排期动态（测试数据）",
+          "summary": "虚构摘要，仅用于本地演示与验收复测，不含任何真实企业信息。",
+          "source_url": "https://example.invalid/intel/fictional-42-8",
+          "relevance": "low_relevance",
+          "match_conditions": {},
+          "status": "checked",
+          "checked_by": "00000000-0000-4000-8000-0000000000e1",
+          "checked_at": "2026-11-25T13:02:29.962542Z",
+          "approved_by": null,
+          "approved_at": null,
+          "published_at": null,
+          "expired_at": null,
+          "review_comment": null,
+          "created_at": "2026-11-25T13:02:30.023677Z",
+          "updated_at": "2026-11-25T13:02:30.023677Z"
+        },
+        {
+          "id": "fd112df3-28da-4e45-8a33-ee54806d5572",
+          "org_id": "a0000000-0000-4000-8000-000000000001",
+          "site_id": "a0000000-0000-4000-8000-0000000000a1",
+          "title": "虚构情报 3：展会排期动态（测试数据）",
+          "summary": "虚构摘要，仅用于本地演示与验收复测，不含任何真实企业信息。",
+          "source_url": "https://example.invalid/intel/fictional-42-2",
+          "relevance": "high_relevance",
+          "match_conditions": {
+            "keywords": [
+              "产业扶持申报"
+            ]
+          },
+          "status": "checked",
+          "checked_by": "00000000-0000-4000-8000-0000000000e1",
+          "checked_at": "2026-11-25T13:02:29.962542Z",
+          "approved_by": null,
+          "approved_at": null,
+          "published_at": null,
+          "expired_at": null,
+          "review_comment": null,
+          "created_at": "2026-11-25T13:02:30.023677Z",
+          "updated_at": "2026-11-25T13:02:30.023677Z"
+        }
+      ]
+    }
+  },
+  {
+    "label": "AC-1：in_check 直接 approve → 409",
+    "request": {
+      "method": "POST",
+      "path": "/api/intel/items/d3bdaa9e-a254-46d6-8448-854dd5755933/approve"
+    },
+    "response_status": 409,
+    "response": {
+      "detail": "action 'approve' is not allowed from status 'in_check' (illegal transition)",
+      "code": "illegal_transition",
+      "extra": {
+        "action": "approve",
+        "current_status": "in_check"
+      }
+    }
+  },
+  {
+    "label": "员工提交核对（submit）",
+    "request": {
+      "method": "POST",
+      "path": "/api/intel/items/d3bdaa9e-a254-46d6-8448-854dd5755933/submit"
+    },
+    "response_status": 200,
+    "response": {
+      "id": "d3bdaa9e-a254-46d6-8448-854dd5755933",
+      "org_id": "a0000000-0000-4000-8000-000000000001",
+      "site_id": "a0000000-0000-4000-8000-0000000000a1",
+      "title": "虚构演示条目：本地复检目标",
+      "summary": "虚构摘要（演示用，测试数据）。",
+      "source_url": "http://127.0.0.1:8027/openapi.json",
+      "relevance": "high_relevance",
+      "match_conditions": {
+        "keywords": [
+          "虚构产业"
+        ]
+      },
+      "status": "checked",
+      "checked_by": "00000000-0000-4000-8000-0000000000e1",
+      "checked_at": "2026-11-25T13:02:33.306290Z",
+      "approved_by": null,
+      "approved_at": null,
+      "published_at": null,
+      "expired_at": null,
+      "review_comment": null,
+      "created_at": "2026-11-25T13:02:33.283776Z",
+      "updated_at": "2026-11-25T13:02:33.306090Z"
+    }
+  },
+  {
+    "label": "主管通过（复检本地链接成功 + 提醒 outbox）",
+    "request": {
+      "method": "POST",
+      "path": "/api/intel/items/d3bdaa9e-a254-46d6-8448-854dd5755933/approve"
+    },
+    "response_status": 200,
+    "response": {
+      "item": {
+        "id": "d3bdaa9e-a254-46d6-8448-854dd5755933",
+        "org_id": "a0000000-0000-4000-8000-000000000001",
+        "site_id": "a0000000-0000-4000-8000-0000000000a1",
+        "title": "虚构演示条目：本地复检目标",
+        "summary": "虚构摘要（演示用，测试数据）。",
+        "source_url": "http://127.0.0.1:8027/openapi.json",
+        "relevance": "high_relevance",
+        "match_conditions": {
+          "keywords": [
+            "虚构产业"
+          ]
+        },
+        "status": "approved",
+        "checked_by": "00000000-0000-4000-8000-0000000000e1",
+        "checked_at": "2026-11-25T13:02:33.306290Z",
+        "approved_by": "00000000-0000-4000-8000-000000000052",
+        "approved_at": "2026-11-25T13:02:33.315593Z",
+        "published_at": null,
+        "expired_at": null,
+        "review_comment": null,
+        "created_at": "2026-11-25T13:02:33.283776Z",
+        "updated_at": "2026-11-25T13:02:33.314886Z"
+      },
+      "approval": {
+        "id": "1d28b167-ece0-400c-b116-761b6ee7a628",
+        "item_id": "d3bdaa9e-a254-46d6-8448-854dd5755933",
+        "action": "approve",
+        "from_status": "checked",
+        "to_status": "approved",
+        "comment": null,
+        "decided_by": "00000000-0000-4000-8000-000000000052",
+        "link_recheck_ok": true,
+        "created_at": "2026-11-25T13:02:33.314886Z"
+      },
+      "briefing_week_start": "2026-11-23",
+      "reminder": {
+        "outbox_id": "bb87bb2b-9bfa-4866-9533-655f7539a00a",
+        "status": "sent"
+      }
+    }
+  },
+  {
+    "label": "AC-4：approved 后改摘要 → 409",
+    "request": {
+      "method": "PATCH",
+      "path": "/api/intel/items/d3bdaa9e-a254-46d6-8448-854dd5755933",
+      "body": {
+        "summary": "尝试修改已审批摘要"
+      }
+    },
+    "response_status": 409,
+    "response": {
+      "detail": "summary and match conditions are locked after approval; withdraw the item to in_check before editing",
+      "code": "content_locked",
+      "extra": {
+        "current_status": "approved",
+        "fields": [
+          "summary"
+        ]
+      }
+    }
+  },
+  {
+    "label": "撤回到 in_check（withdraw）",
+    "request": {
+      "method": "POST",
+      "path": "/api/intel/items/d3bdaa9e-a254-46d6-8448-854dd5755933/withdraw"
+    },
+    "response_status": 200,
+    "response": {
+      "id": "d3bdaa9e-a254-46d6-8448-854dd5755933",
+      "org_id": "a0000000-0000-4000-8000-000000000001",
+      "site_id": "a0000000-0000-4000-8000-0000000000a1",
+      "title": "虚构演示条目：本地复检目标",
+      "summary": "虚构摘要（演示用，测试数据）。",
+      "source_url": "http://127.0.0.1:8027/openapi.json",
+      "relevance": "high_relevance",
+      "match_conditions": {
+        "keywords": [
+          "虚构产业"
+        ]
+      },
+      "status": "in_check",
+      "checked_by": "00000000-0000-4000-8000-0000000000e1",
+      "checked_at": "2026-11-25T13:02:33.306290Z",
+      "approved_by": null,
+      "approved_at": null,
+      "published_at": null,
+      "expired_at": null,
+      "review_comment": null,
+      "created_at": "2026-11-25T13:02:33.283776Z",
+      "updated_at": "2026-11-25T13:02:33.335560Z"
+    }
+  },
+  {
+    "label": "撤回后修改摘要成功",
+    "request": {
+      "method": "PATCH",
+      "path": "/api/intel/items/d3bdaa9e-a254-46d6-8448-854dd5755933",
+      "body": {
+        "summary": "撤回后重新核对的虚构摘要"
+      }
+    },
+    "response_status": 200,
+    "response": {
+      "id": "d3bdaa9e-a254-46d6-8448-854dd5755933",
+      "org_id": "a0000000-0000-4000-8000-000000000001",
+      "site_id": "a0000000-0000-4000-8000-0000000000a1",
+      "title": "虚构演示条目：本地复检目标",
+      "summary": "撤回后重新核对的虚构摘要",
+      "source_url": "http://127.0.0.1:8027/openapi.json",
+      "relevance": "high_relevance",
+      "match_conditions": {
+        "keywords": [
+          "虚构产业"
+        ]
+      },
+      "status": "in_check",
+      "checked_by": "00000000-0000-4000-8000-0000000000e1",
+      "checked_at": "2026-11-25T13:02:33.306290Z",
+      "approved_by": null,
+      "approved_at": null,
+      "published_at": null,
+      "expired_at": null,
+      "review_comment": null,
+      "created_at": "2026-11-25T13:02:33.283776Z",
+      "updated_at": "2026-11-25T13:02:33.346841Z"
+    }
+  },
+  {
+    "label": "AC-2：主管审批自己核对的条目 → 403",
+    "request": {
+      "method": "POST",
+      "path": "/api/intel/items/2630c89a-769e-445e-959a-ff9363d9a839/approve"
+    },
+    "response_status": 403,
+    "response": {
+      "detail": "supervisors cannot approve items they checked themselves (four-eyes principle)",
+      "code": "four_eyes_violation"
+    }
+  },
+  {
+    "label": "AC-3：驳回未填意见 → 422",
+    "request": {
+      "method": "POST",
+      "path": "/api/intel/items/2630c89a-769e-445e-959a-ff9363d9a839/reject",
+      "body": {}
+    },
+    "response_status": 422,
+    "response": {
+      "detail": [
+        {
+          "type": "missing",
+          "loc": [
+            "body",
+            "comment"
+          ],
+          "msg": "Field required",
+          "input": {}
+        }
+      ]
+    }
+  },
+  {
+    "label": "AC-3：带意见驳回 → 回到 in_check 并保留意见",
+    "request": {
+      "method": "POST",
+      "path": "/api/intel/items/2630c89a-769e-445e-959a-ff9363d9a839/reject",
+      "body": {
+        "comment": "请补充虚构原文佐证"
+      }
+    },
+    "response_status": 200,
+    "response": {
+      "id": "2630c89a-769e-445e-959a-ff9363d9a839",
+      "org_id": "a0000000-0000-4000-8000-000000000001",
+      "site_id": "a0000000-0000-4000-8000-0000000000a1",
+      "title": "虚构演示条目：四眼原则",
+      "summary": "虚构摘要（演示用）。",
+      "source_url": "http://127.0.0.1:8027/openapi.json",
+      "relevance": "medium_relevance",
+      "match_conditions": {},
+      "status": "in_check",
+      "checked_by": "00000000-0000-4000-8000-000000000051",
+      "checked_at": "2026-11-25T13:02:33.359673Z",
+      "approved_by": null,
+      "approved_at": null,
+      "published_at": null,
+      "expired_at": null,
+      "review_comment": "请补充虚构原文佐证",
+      "created_at": "2026-11-25T13:02:33.353968Z",
+      "updated_at": "2026-11-25T13:02:33.371797Z"
+    }
+  },
+  {
+    "label": "生产复检失败：原文链接不可达 → 409",
+    "request": {
+      "method": "POST",
+      "path": "/api/intel/items/1898a063-61e8-4e68-be23-e02500d2a6ea/approve"
+    },
+    "response_status": 409,
+    "response": {
+      "detail": "original link recheck failed; the item cannot be approved",
+      "code": "link_recheck_failed",
+      "extra": {
+        "link_recheck": {
+          "ok": false,
+          "http_status": null,
+          "detail": "unreachable: <urlopen error [Errno 8] nodename nor servname provided, or not known>"
+        }
+      }
+    }
+  }
+]
